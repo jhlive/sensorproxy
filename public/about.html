@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+
+  <title>ENSEMBLE</title>
+</head>
+
+<body>
+  <div class="header">
+    <div class="logo">
+    </div>
+
+    <div class="menu">
+    <div class="nav">
+            <ul >
+              <li class="active"><a href="../index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </div>
+    </div>
+
+
+  <div class="intro">
+      <h3 class="title">Ensemble is a wearable that uses biometric feedback and motion to generate & stream music, inverting the traditional relationship between music and dance.</h3>
+      <p class="introp">Created at the Intel IoT Roadshow Hackathon
+      <br>Feb 11-12th 2015
+      <br>Seattle, WA</p>
+  </div>
+
+  <div class="project">
+    <h3 class="title">The Project</h3>
+    <p>"My inspiration for designing and creating Ensemble was in part a reaction to the current state of wearables. As I kept looking at other projects I was blown away by intersection of technology and art, but I noticed a pattern where women's bodies were used to display data. Any data creation bordered on passive: emotions and biometric data pulled from the body. Ensemble challenges this narrative by intentionally using action to manipulate one's own biometrics--the body is no longer passive, but in fact an instrument. Using this instrument, we have created a way for the wearer to create music as she moves.
+    <br>"While the focus of our project at the Intel IoT Roadshow hackathon has been to learn about the Intel Edison, have fun creating the MVP, and collaborate with other creative minds, we believe this technology can help us rethink the way we think of wearables. The concept behind Ensemble would be great for a multitude of other applications. Think auditory based dance instruction. Think feedback and optimization of sports performance. Ensemble would even be great as an alternative therapy tool for those of us with PTSD, anxiety disorders, or disassociation by connecting the wearer back to her own body. And, of course, Ensemble would be great for musicians and artists!" -- liz rush</p>
+
+    <h3 class="title">The Tech</h3>
+    <p>
+    Ensemble is centered around the Intel Edison, attached to the garment itself and connected to multiple sensors on the body. During the hackathon, we added a stretch sensor around the rib cage to capture data about breathing rate and flex sensors on the wirst and elbow to capture motion. We've also attached an LED to the neckpiece, which indicates whenever the suit is live streaming data. On the back of the next, we have a push button which sends a message to the Edison to start recording a composition and to send the title and BPM to the wrist mounted RGB LCD display.</p>
+
+    <p>
+
+    We steam data to the Intel Edison using the sensors from the Grove kit and BTLE. We then send this data out to our Node.js cloud service called the Ensemble Server. This filtered data is sent over a web socket that we then use to influence an audio synthesis engine. Clients can connect directly to the Edison devices's HTTP port to listen to the live generated service. We rely heavily on the technical features of the Edison to power this wearable.
+
+    In addition, music is stored on, and can be played back on the cloud service. Compositions can be shared with others, and eventually, by allowing multiple Edisons to send events to the cloud, people can remotely collaborate on live Compositions.
+
+    While developing at the hackathon, we've been using the Intel XDK IoT edition for rapid prototyping and quickly building & testing on the device.
+    </p>
+
+  </div>
+
+  <div class="team">
+    <h3 class="title">The Team</h3>
+
+    <div class="person">
+      <img class="avatar" src="images/Avartar/liz.png"/>
+      <div class="name">liz rush</div>
+      <div class="role">Team Lead/Seamstress</div>
+    </div>
+
+    <div class="person">
+      <img class="avatar" src="images/Avartar/jon.jpeg"/>
+      <div class="name">Jon Madison</div>
+      <div class="role">Team Lead/Developer</div>
+    </div>
+
+    <div class="person">
+      <img class="avatar" src="images/Avartar/fen.png" />
+      <div class="name">Fen Xie</div>
+      <div class="role">Front-End Developer</div>
+    </div>
+
+    <div class="person">
+      <img class="avatar" src="images/Avartar/josh.png"/>
+      <div class="name">Josh Buchacher</div>
+      <div class="role">Developer</div>
+    </div>
+
+      <div class="person">
+      <img class="avatar" src="images/Avartar/robert.png"/>
+      <div class="name">Robert Snell</div>
+      <div class="role">Developer</div>
+    </div>
+
+    <div class="person">
+      <img class="avatar" src="images/Avartar/junyin.png"/>
+      <div class="name">Junyin Chang</div>
+      <div class="role">Designer</div>
+    </div>
+
+    <div class="person">
+      <img class="avatar" src="images/Avartar/diane.jpeg"/>
+      <div class="name">Diane Kerstein</div>
+      <div class="role">Developer</div>
+    </div>
+
+      <div class="person">
+      <img class="avatar" src="images/Avartar/ragar.png"/>
+      <div class="name">René Alfredo García Hernández</div>
+      <div class="role">Developer</div>
+    </div>
+
+    <div class="person">
+      <img class="avatar" src="images/Avartar/martin.png"/>
+      <div class="name">Martin Smith</div>
+      <div class="role">Developer</div>
+    </div>
+
+      <div class="person">
+      <img class="avatar" src="images/Avartar/kai.jpeg"/>
+      <div class="name">Kai Curtis</div>
+      <div class="role">Developer</div>
+    </div>
+
+      <div class="person">
+      <img class="avatar" src="images/Avartar/andy.png"/>
+      <div class="name">Andrew Ernst</div>
+      <div class="role">Developer</div>
+    </div>
+
+  </div>
+  <div class="footer">Copyright@2015</div>
+
+</body>
+</html>

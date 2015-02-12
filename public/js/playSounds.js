@@ -1,24 +1,18 @@
-<script src="js/socket.io.js"></script>
-<script src="js/timbre.dev.js"></script>
-<script src="js/subcollider.js"></script>
+var BD;
+var SD;
+var HH1;
+var HH2;
+var CYM;
 
-<script>
-
-  var BD;
-  var SD;
-  var HH1;
-  var HH2;
-  var CYM;
-
-  var scale;
-  var P1;
-  var P2;
-  var drum;
-  var lead;
-  var env;
-  var arp;
-  var delay;
-  var inv;
+var scale;
+var P1;
+var P2;
+var drum;
+var lead;
+var env;
+var arp;
+var delay;
+var inv;
 
 T("audio").load("./drumkit.wav", function() {
   BD  = this.slice(   0,  500).set({bang:false});
@@ -47,8 +41,8 @@ T("audio").load("./drumkit.wav", function() {
   arp  = T("OscGen", {wave:"sin(15)", env:env, mul:0.5});
 
   delay = T("delay", {time:"BPM128 L4", fb:0.65, mix:0.35},
-    T("pan", {pos:T("tri", {freq:"BPM64 L1", mul:0.8}).kr()}, arp)
-  ).play();
+            T("pan", {pos:T("tri", {freq:"BPM64 L1", mul:0.8}).kr()}, arp)
+           ).play();
 
   inv = T("interval", {interval:"BPM128 L16"}, function(count) {
     var i = count % P1.length;
@@ -67,17 +61,32 @@ T("audio").load("./drumkit.wav", function() {
       lead.freq.linTo(noteNum.midicps() * 2, "100ms");
     }
     arp.noteOn(noteNum + 24, 60);
-  }).start();
+  });
 });
 
-  var notes = io.connect('http://10.65.19.166:8080/notes');
-    notes.on('connect', function () {
+$('#stream-info').hide();
+
+$('.listen-button').on('click', function(e) {
+  e.preventDefault();
+  var ip = $('.listen-ip').val() || '10.65.19.166';
+  console.log('ip is ' + ip);
+
+  var notes = io.connect('http://'+ip+':8080/notes');
+  notes.on('connect', function () {
     console.log('connected to socket');
+    $('.connected-status').text('Connected').addClass('connected');
+    $('#stream-info').show();
+    inv.start()
   });
 
-  notes.on('noteReceived', function (note) {
-                        var value = note.value;
-                        inv.set({interval: value})
-    console.log(note);
+  notes.on('tempo', function (tempo) {
+    var value = tempo.value;
+    $('#tempo').text(value.toFixed(1));
+    inv.set({interval: value})
+    console.log(tempo);
   });
-</script>
+});
+
+notes.on('sensorData', function (tempo) {
+  console.log(tempo);
+});

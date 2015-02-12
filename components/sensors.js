@@ -1,9 +1,9 @@
 var poster = require('../poster')
 
-module.exports = function(sensors,socket) {
+module.exports = function(sensors) {
   var scaleFactor = 5;
 
-  var postSensorReading = function(sensor,reading) {
+  var postSensorReading = function(sensor,reading, socket) {
     var note = {
       value: reading,
       sensor_type: sensor.description,
@@ -17,7 +17,7 @@ module.exports = function(sensors,socket) {
     })
 
     if (socket) {
-      socket.emit('noteReceived', note);
+      socket.emit('sensorData', note);
     }
   }
 
@@ -62,7 +62,7 @@ module.exports = function(sensors,socket) {
   }
 
   return {
-    readAllSensors: function(my) {
+    readAllSensors: function(my, socket) {
       for(var sensorName in sensors) {
         var value = 0;
         var sensor = sensors[sensorName];
@@ -71,7 +71,7 @@ module.exports = function(sensors,socket) {
         if(sensors[sensorName].enabled) {
           val = readSensor(my[sensorName])
           if (val != null) {
-            postSensorReading(sensor,val);
+            postSensorReading(sensor,val, socket);
           }
         }
       }

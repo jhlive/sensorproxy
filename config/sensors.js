@@ -5,7 +5,7 @@ module.exports =  {
     "driver":"analogSensor",
     "lowerLimit":0,
     "upperLimit":10000,
-    "enabled":true
+    "enabled":false
   },
   "pressure1": {
     "description":"homemade pressure sensor",
@@ -22,7 +22,7 @@ module.exports =  {
     "driver": "button",
     "controlEventPush":"toggleComposition",
     "controlEventRelease":null,
-    "enabled": true
+    "enabled": false
   },
   "flatButton": {
     "description":"my button demo",
