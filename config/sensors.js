@@ -9,22 +9,32 @@ module.exports =  {
   },
   "pressure1": {
     "description":"homemade pressure sensor",
-    "pin": 1 ,
+    "pin": 0 ,
     "driver":"analogSensor",
     "lowerLimit": 0,
     "upperLimit": 1100,
     "invert":true,
     "enabled":false
   },
-  "button2": {
+  "compositionButton": {
     "description":"my button demo",
-    "pin": 6,
+    "pin": 2,
     "driver": "button",
+    "controlEventPush":"toggleComposition",
+    "controlEventRelease":null,
+    "enabled": true
+  },
+  "flatButton": {
+    "description":"my button demo",
+    "pin": 2,
+    "driver": "button",
+    "controlEventPush":"tempo",
+    "controlEventRelease":"releaseButton",
     "enabled": true
   },
   "pressure2": {
     "description":"homemade pressure sensor",
-    "pin": 2 ,
+    "pin": 0 ,
     "driver":"analogSensor",
     "lowerLimit": 0,
     "upperLimit": 1100,
@@ -33,7 +43,7 @@ module.exports =  {
   },
   "pressure3": {
     "description":"homemade pressure sensor",
-    "pin": 3 ,
+    "pin": 0 ,
     "driver":"analogSensor",
     "lowerLimit": 0,
     "upperLimit": 1100,
@@ -42,18 +52,12 @@ module.exports =  {
   },
   "pressure4": {
     "description":"homemade pressure sensor",
-    "pin": 4 ,
+    "pin": 0 ,
     "driver":"analogSensor",
     "lowerLimit": 0,
     "upperLimit": 1100,
     "invert":true,
     "enabled":false
-  },
-  "sonic": {
-    "description":"sonic sensor",
-    "enabled":false,
-    "pins": [ 10,11 ],
-    "driver":"analogSensor"
   },
   "softpot":{
     "description":"softpot resistor",
